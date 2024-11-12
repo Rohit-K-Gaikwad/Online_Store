@@ -1,13 +1,10 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import CategoryViewSet, ProductViewSet, OrderViewSet
-
-router = DefaultRouter()
-router.register(r'categories', CategoryViewSet)
-router.register(r'products', ProductViewSet)
-router.register(r'orders', OrderViewSet)
+from django.urls import path
+from store import views
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('orders/create/', OrderViewSet.as_view({'post': 'create_order'})),
+    path('categories/', views.CategoryListCreateView.as_view(), name='category-list-create'),
+    path('categories/<int:pk>/', views.CategoryDetailView.as_view(), name='category-detail'),
+    path('products/', views.ProductListCreateView.as_view(), name='product-list-create'),
+    path('products/<int:pk>/', views.ProductDetailView.as_view(), name='product-detail'),
+    path('orders/create/', views.CreateOrderView.as_view(), name='order-create'),
 ]
