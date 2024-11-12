@@ -76,15 +76,12 @@ WSGI_APPLICATION = 'online_store.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'online_store_db',
-        'USER': 'practice',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'online_store',
+        'USER': 'postgres',
         'PASSWORD': 'password',
-        'HOST': '127.0.0.2',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
